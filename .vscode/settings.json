@@ -3,5 +3,8 @@
     "**/node_modules": true,
     "**/bower_components": true,
     "**/.sfdx": true
-  }
+  },
+  "salesforce.einsteinForDevelopers.enableInlineIndicatorForAutocomplete": false,
+  "salesforce.einsteinForDevelopers.enableAutocompletionsSleepModeMonitoring": false,
+  "salesforce.einsteinForDevelopers.enableAutocompletions": false
 }
