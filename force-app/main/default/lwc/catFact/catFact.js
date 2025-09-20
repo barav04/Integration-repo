@@ -1,16 +1,22 @@
 // catFact.js
 import { LightningElement, wire } from 'lwc';
-import getRandomCatFact from '@salesforce/apex/CatFactService.getRandomCatFact';
+
+import getUserRepos from '@salesforce/apex/GitHubService.getUserRepos';
 
 export default class CatFact extends LightningElement {
     fact;
-
-    @wire(getRandomCatFact)
-    wiredFact({ error, data }) {
+    repos = [];
+    error;
+    
+    @wire(getUserRepos)
+    wiredRepos({ error, data }) {
         if (data) {
-            this.fact = data;
+            console.log('in');
+            this.repos = data;
+            this.error = undefined;
         } else if (error) {
-            this.fact = 'Error fetching fact';
+            this.error = error.body ? error.body.message : error.message;
+            this.repos = [];
         }
     }
 }

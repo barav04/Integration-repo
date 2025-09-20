@@ -5,6 +5,10 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+        list<account> accList = [select id,name from Account limit 5];
+        for (Account acc :acclist) {
+            // System.debug(acc.name);
+            Map<Id, Account> accMap = new Map<Id, Account>();
+            accMap.put(acc.id,acc);
+            system.debug(accMap);
+        }

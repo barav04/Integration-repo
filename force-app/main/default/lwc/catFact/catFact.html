@@ -2,4 +2,16 @@
     <lightning-card tilt = "Randam Cat Fact">
         <p class="slds-p-around_medium">{fact}</p>
     </lightning-card>
+    <lightning-card title="My GitHub Repositories">
+        <template if:true={repos}>
+            <ul class="slds-p-around_medium">
+                <template for:each={repos} for:item="repo">
+                    <li key={repo.full_name}>{repo.full_name}</li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={error}>
+            <p class="slds-p-around_medium">Error: {error}</p>
+        </template>
+    </lightning-card>
 </template>
